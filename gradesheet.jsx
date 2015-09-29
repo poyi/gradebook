@@ -1,21 +1,24 @@
-Gradesheet = React.createClass({
+GradeSheet = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      students: Students.find({}).fetch()
+      students: Students.find({}).fetch(),
     }
   },
-  renderStudents() {
+  renderStudentRows() {
     return this.data.students.map((student) => {
-      return <GradeRow key={student._id} student={student} />;
+      return <GradeRow key={student._id} student={student} gradesheet={this.props.gradesheet} />;
     });
   },
   render() {
     return (
-      <table className="gradeSheet">
-        <SheetHeader />
-        {this.renderStudents()}
-      </table>
+      <div>
+        <AddAssignment gradesheet={this.props.gradesheet} />
+        <table className="gradeSheet">
+          <SheetHeader gradesheet={this.props.gradesheet}/>
+          {this.renderStudentRows()}
+        </table>
+      </div>
     );
   }
 });
