@@ -17,16 +17,20 @@ AddGradebook = React.createClass({
     React.findDOMNode(this.refs.name).value = "";
   },
   render() {
-    return(
-      <div>
-        <form className="add-gradesheet" onSubmit={this.handleSubmit} >
-          <input
-            type="text"
-            ref="name"
-            placeholder="Gradesheet Name" />
-          <button type="submit">Add Gradebook</button>
-        </form>
-      </div>
-    );
+    if(this.props.isOpen){
+      return(
+        <div className="modal-form">
+          <form className="add-gradesheet" onSubmit={this.handleSubmit} >
+            <input
+              type="text"
+              ref="name"
+              placeholder="Gradesheet Name" />
+            <button type="submit">CREATE</button>
+          </form>
+        </div>
+      );
+    } else {
+      return <div></div>
+    }
   }
 });

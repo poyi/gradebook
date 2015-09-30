@@ -1,0 +1,26 @@
+@import 'global.scss';
+
+.gradebook-title {
+  font-size: 26px;
+  font-weight: 700;
+  float: left;
+  color: $primary-blue;
+  font-family: $font;
+}
+
+.gradebook-item {
+  width: 300px;
+  height: 40px;
+  background: #f8f8f8;
+  float: left;
+  padding: 15px;
+  margin: 15px;
+}
+
+.gradebook-item a {
+  font-size: 16px;
+  color: $primary-blue;
+  text-decoration: none;
+  font-family: $font;
+  font-weight: 500;
+}
