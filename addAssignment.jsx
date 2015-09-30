@@ -6,20 +6,25 @@ AddAssignment = React.createClass({
     var name = React.findDOMNode(this.refs.name).value.trim();
     var desc = React.findDOMNode(this.refs.desc).value.trim();
     var total = React.findDOMNode(this.refs.total).value.trim();
-    var gradesheet = this.props.gradesheet;
+    var gradesheet_id = this.props.gradesheet._id;
 
-    Meteor.call('addAssignment', gradesheet, name, total, function(error, result){
-      // Fill in default score for each student
-      var students = Students.find({}).fetch();
-      students.map((student) => {
-        Scores.insert({
-            gradesheet: gradesheet,
-            student: student._id,
-            assignment: result,
-            point: 0,
-            createdAt: new Date()
-          });
-      });
+    Meteor.call('addAssignment', gradesheet_id, name, total, function(error, result){
+      if(result) {
+        // Fill in default score for each student
+        var students = Students.find({}).fetch();
+        students.map((student) => {
+          Scores.insert({
+              gradesheet: gradesheet_id,
+              student: student._id,
+              assignment: result,
+              point: 0,
+              createdAt: new Date()
+            });
+        });
+        console.log('Default scores added for each student');
+      } else {
+        console.log(error);
+      }
     });
 
     // Clear form
@@ -30,7 +35,7 @@ AddAssignment = React.createClass({
   render() {
     return(
       <div>
-        <form className="new-assignment" onSubmit={this.handleSubmit} >
+        <form className="add-assignment" onSubmit={this.handleSubmit} >
           <input
             type="text"
             ref="name"

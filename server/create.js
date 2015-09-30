@@ -6,11 +6,24 @@ Meteor.methods({
       'createdAt': new Date()
     });
   },
-  addAssignment: function (gradesheet, name, total) {
+  addAssignment: function (gradesheet_id, name, total) {
     return Assignments.insert({
-      'gradesheet': gradesheet,
+      'gradesheet': gradesheet_id,
       'name': name,
       'total': total,
+      'createdAt': new Date()
+    });
+  },
+  addGradesheet: function (gradebook_id, name) {
+    return Gradesheets.insert({
+      'gradebook': gradebook_id,
+      'name': name,
+      'createdAt': new Date()
+    });
+  },
+  addGradebook: function (name) {
+    return Gradebooks.insert({
+      'name': name,
       'createdAt': new Date()
     });
   }

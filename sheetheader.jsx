@@ -2,7 +2,7 @@ SheetHeader = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
     return {
-      assignments: Assignments.find({ gradesheet: this.props.gradesheet }).fetch()
+      assignments: Assignments.find({ gradesheet: this.props.gradesheet._id }).fetch()
     }
   },
   renderAssignments() {
