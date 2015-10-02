@@ -5,8 +5,10 @@ GradebookLink = React.createClass({
   },
   render() {
     return (
-      <div className="gradebook-item">
-        <a href={this.url()}>{this.props.gradebook.name}</a>
+      <div>
+        <a href={this.url()} className="gradebook-item">
+            <div className="book-title">{this.props.gradebook.name}</div>
+        </a>
       </div>
     );
   }

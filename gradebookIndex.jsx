@@ -18,10 +18,6 @@ GradebookIndex = React.createClass({
       $('.add-gradebook').text('CLOSE FORM');
     }
   },
-
-  closeModal: function() {
-      this.setState({ isModalOpen: false });
-  },
   showGradebooks() {
     return this.data.gradebooks.map((gradebook) => {
       return <GradebookLink key={gradebook._id} gradebook={gradebook} />
@@ -32,7 +28,7 @@ GradebookIndex = React.createClass({
       <div className="container">
         <header className="header">
           <div className="gradebook-title">Gradebooks</div>
-          <button className="add-gradebook" onClick={this.toggleModal}>ADD GRADEBOOK</button>
+          <button className="add-gradebook" onClick={this.toggleModal}>+ ADD GRADEBOOK</button>
           <AddGradebook isOpen={this.state.isModalOpen}/>
         </header>
         {this.showGradebooks()}

@@ -4,17 +4,19 @@
   position: fixed;
   width: 320px;
   right: 10px;
-  top: 60px;
+  top: 105px;
   height: auto;
-  border: 1px solid $border-gray;
+  border: 1px solid $line-gray;
   z-index: 99999;
+  font-family: $font;
+  background: white;
   @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.2));
   @include rounded();
 }
 
 .modal-form input {
   width: 300px;
-  padding: 10px 10px;
+  padding: 10px;
   border: none;
   border-bottom: $border;
   font-size: 14px;
@@ -22,4 +24,16 @@
 
 .modal-form button {
   margin: 5px;
+}
+
+.modal-form .form-header {
+    width: 300px;
+    padding: 10px;
+    font-weight: 400;
+    border-bottom: $border;
+}
+
+.modal-form .form-close {
+    display: inline-block;
+    float: right;
 }

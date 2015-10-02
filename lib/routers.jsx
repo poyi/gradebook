@@ -13,7 +13,7 @@ FlowRouter.route('/gradebook/:_id', {
   },
   action: function(params) {
     ReactLayout.render(MainLayout, {
-      content: <GradeBook gradebook={params._id} />
+      content: <GradebookPage gradebook={params._id} />
     });
   }
 });

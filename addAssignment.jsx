@@ -1,5 +1,5 @@
 AddAssignment = React.createClass({
-  handleSubmit(event) {
+    _handleSubmit(event) {
     event.preventDefault();
 
     // Find the text field via the React ref
@@ -26,31 +26,26 @@ AddAssignment = React.createClass({
         console.log(error);
       }
     });
-
     // Clear form
     React.findDOMNode(this.refs.name).value = "";
     React.findDOMNode(this.refs.desc).value = "";
     React.findDOMNode(this.refs.total).value = "";
-  },
+},
   render() {
-    return(
-      <div>
-        <form className="add-assignment" onSubmit={this.handleSubmit} >
-          <input
-            type="text"
-            ref="name"
-            placeholder="Assignment Name" />
-            <input
-              type="text"
-              ref="desc"
-              placeholder="Description" />
-          <input
-            type="text"
-            ref="total"
-            placeholder="Total Points" />
-          <button type="submit">Add Assignment</button>
-        </form>
-      </div>
-    );
+    if(this.props.newAssignment) {
+        return(
+          <div className="modal-form">
+            <form className="new-assignment" onSubmit={this._handleSubmit}>
+                <div className="form-header">Add New Assignment<a className="form-close" onClick={this.props.closeForm}>x</a></div>
+                <input type="text" ref="name" placeholder="Assignment Name" />
+                <input type="text" ref="desc" placeholder="Description" />
+                <input type="text" ref="total" placeholder="Total Points" />
+                <button type="submit">ADD</button>
+            </form>
+          </div>
+        );
+    } else {
+        return <div className="invisible"></div>
+    }
   }
 });
