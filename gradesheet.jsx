@@ -58,7 +58,7 @@ GradeSheet = React.createClass({
     render() {
         if(this.data.isVisible) {
             return (
-                <div>
+                <div className="sheet-container">
                     <div className="sheet-actions">
                         <a className="add-student add-link" onClick={this._addStudent}>+ ADD STUDENT</a>
                         <a className="add-assignment add-link" onClick={this._addAssignment}>+ ADD ASSIGNMENT</a>

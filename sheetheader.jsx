@@ -13,7 +13,7 @@ SheetHeader = React.createClass({
   render() {
     return (
       <tr className="gradeRow-header">
-        <td className="row-name">NAME</td>
+        <td className="row-name">Name</td>
         {this.renderAssignments()}
       </tr>
     );

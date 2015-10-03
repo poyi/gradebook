@@ -6,16 +6,16 @@ GradebookIndex = React.createClass({
    }
   },
   getInitialState: function() {
-    return { isModalOpen: false };
+    return { newGradebook: false };
   },
-  toggleModal: function() {
-    var currentState = this.state.isModalOpen;
+  _addGradebook: function() {
+    var currentState = this.state.newGradebook;
     if(currentState) {
-      this.setState({ isModalOpen: false });
-      $('.add-gradebook').text('ADD GRADEBOOK');
+      this.setState({ newGradebook: false });
+      $('.add-gradebook').text('+ ADD GRADEBOOK');
     } else {
-      this.setState({ isModalOpen: true });
-      $('.add-gradebook').text('CLOSE FORM');
+      this.setState({ newGradebook: true });
+      $('.add-gradebook').text('- CLOSE FORM');
     }
   },
   showGradebooks() {
@@ -23,13 +23,17 @@ GradebookIndex = React.createClass({
       return <GradebookLink key={gradebook._id} gradebook={gradebook} />
     });
   },
+  _closeForm: function() {
+      this.setState({ newGradebook: false });
+      $('.add-gradebook').text('+ ADD GRADEBOOK');
+  },
   render() {
     return (
       <div className="container">
         <header className="header">
-          <div className="gradebook-title">Gradebooks</div>
-          <button className="add-gradebook" onClick={this.toggleModal}>+ ADD GRADEBOOK</button>
-          <AddGradebook isOpen={this.state.isModalOpen}/>
+          <div className="gradebook-title-home">Gradebooks</div>
+          <button className="add-gradebook" onClick={this._addGradebook}>+ ADD GRADEBOOK</button>
+          <AddGradebook newGradebook={this.state.newGradebook} closeForm={this._closeForm}/>
         </header>
         {this.showGradebooks()}
       </div>

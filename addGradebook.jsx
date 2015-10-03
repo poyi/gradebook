@@ -17,7 +17,7 @@ AddGradebook = React.createClass({
     React.findDOMNode(this.refs.name).value = "";
   },
   render() {
-    if(this.props.isOpen){
+    if(this.props.newGradebook){
       return(
         <div className="modal-form">
           <form className="new-gradesheet" onSubmit={this.handleSubmit} >

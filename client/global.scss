@@ -1,5 +1,7 @@
 $primary-blue: #295ee6;
 $primary-black: #202020;
+$light-blue: #80a2f6;
+$dark-gray: #a2a2a2;
 $dark-blue: #3E6AAD;
 $light-gray: #fcfcfc;
 $line-gray: #F3ECEC;
@@ -29,30 +31,48 @@ body {
   background: $dark-blue;
 }
 
+.container {
+    margin-top: 95px;
+}
+
 .home-link {
-  background: $primary-blue;
-  padding: 0 10px 4px;
+  background: $light-blue;
+  padding: 10px 10px 15px;
   font-size: 26px;
   font-weight: 700;
   text-decoration: none;
   color: white;
-  margin-right: 15px;
+  margin-right: 10px;
   float:left;
-  @include rounded();
+}
+
+.home-link:hover {
+    background: $dark-blue;
 }
 
 .header {
-    height: 40px;
+    height: 50px;
     border-bottom: $border;
-    padding: 10px 10px 0;
     background: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.gradebook-title {
+    font-size: 28px;
+    font-weight: 400;
+    float: left;
+    color: $primary-black;
+    padding: 10px 5px;
+    font-family: $font;
 }
 
 button {
   min-width: 60px;
   background: white;
   padding: 6px 10px 5px;
-  border: 1px solid $primary-blue;
+  border: 1px solid $light-blue;
   font-size: 12px;
   color: $primary-blue;
   float: right;
@@ -61,6 +81,7 @@ button {
   letter-spacing: 0.05em;
   outline: none;
   @include rounded();
+  cursor: pointer;
 }
 
 .invisible {

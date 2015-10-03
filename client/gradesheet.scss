@@ -1,9 +1,7 @@
 @import 'global.scss';
 
 .gradeSheet {
-  table-layout: fixed;
   border-collapse: collapse;
-  margin: 40px auto;
   @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.2));
   @include rounded();
 }
@@ -16,6 +14,10 @@
   color: $primary-blue;
   background: $light-gray;
   padding-top: 10px;
+  width: 100%;
+  position: fixed;
+  top: 51px;
+  @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.2));
 }
 
 .gradesheet-nav a {
@@ -23,8 +25,12 @@
     display: inline-block;
 }
 
+.gradesheet-nav a:hover {
+    color: $light-blue;
+}
+
 .add-link {
-    border: 1px solid $primary-blue;
+    border: 1px solid $light-blue;
     font-size: 12px;
     padding: 6px 10px 5px;
     font-family: $font;
@@ -37,20 +43,22 @@
     color: $primary-black;
 }
 
-.table-border, .score-cell, .row-name {
-  border: 1px solid $line-gray;
+.current-sheet:hover {
+    color: $primary-black !important;
 }
 
-.score-cell {
-  width: 70px;
+.table-border, .score-cell, .row-name {
+  border: 1px solid $line-gray;
+  padding: 10px;
+  white-space: nowrap;
 }
 
 .score-cell input {
-  padding: 10px 15px;
   font-size: 13px;
   text-align: right;
-  width: 50px;
   border: none;
+  height:100%;
+  width: 100%;
 }
 
 .score-cell input:focus {
@@ -67,6 +75,7 @@
 
 .gradeRow {
   margin-top: 20px;
+  background: white;
 }
 
 .gradeRow-header {
@@ -76,6 +85,7 @@
 .gradeRow-header td {
   font-weight: bold !important;
   font-size: 13px !important;
+  background: white;
 }
 
 .gradeRow-header td input {
@@ -91,4 +101,12 @@
 
 .sheet-actions a {
     margin-left: 10px;
+}
+
+.sheet-actions a:hover {
+    color: $light-blue;
+}
+
+.sheet-container {
+    width: auto;
 }
