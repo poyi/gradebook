@@ -24,9 +24,14 @@ GradeSheet = React.createClass({
             return {isVisible: false, newAssignment: false, newStudent: false};
         }
     },
-    renderStudentRows() {
+    _renderStudentRows() {
         return this.data.students.map((student) => {
             return <GradeRow key={student._id} student={student} gradesheet={this.props.gradesheet} />;
+        });
+    },
+    _renderStudentColumn() {
+        return this.data.students.map((student) => {
+            return <StudentColumn key={student._id} student={student} />;
         });
     },
     _addAssignment() {
@@ -55,6 +60,14 @@ GradeSheet = React.createClass({
         this.setState({ newStudent: false });
         $('.add-student').text('+ ADD STUDENT');
     },
+    componentDidMount: function() {
+        var fixedWidth = $('.fixed-table').width();
+        $('.table').css('left', fixedWidth);
+    },
+    componentDidUpdate: function() {
+        var fixedWidth = $('.fixed-table').width();
+        $('.table').css('left', fixedWidth);
+    },
     render() {
         if(this.data.isVisible) {
             return (
@@ -63,10 +76,14 @@ GradeSheet = React.createClass({
                         <a className="add-student add-link" onClick={this._addStudent}>+ ADD STUDENT</a>
                         <a className="add-assignment add-link" onClick={this._addAssignment}>+ ADD ASSIGNMENT</a>
                     </div>
-                    <table className="gradeSheet">
+                    <div className="fixed-table">
+                        <div className="table-fixed">Name</div>
+                        {this._renderStudentColumn()}
+                    </div>
+                    <div className="table">
                         <SheetHeader gradesheet={this.props.gradesheet}/>
-                        {this.renderStudentRows()}
-                    </table>
+                        {this._renderStudentRows()}
+                    </div>
                     <AddAssignment gradesheet={this.props.gradesheet} newAssignment={this.state.newAssignment} closeForm={this._closeForm}/>
                     <AddStudent newStudent={this.state.newStudent} closeForm={this._closeForm}/>
                 </div>

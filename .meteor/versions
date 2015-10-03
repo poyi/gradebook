@@ -65,6 +65,7 @@ reload@1.1.4
 retry@1.0.4
 routepolicy@1.0.6
 session@1.1.1
+sherdeadlock:fixed-data-table@0.0.9
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 standard-minifiers@1.0.1

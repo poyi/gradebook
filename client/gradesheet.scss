@@ -1,9 +1,65 @@
 @import 'global.scss';
 
-.gradeSheet {
-  border-collapse: collapse;
-  @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.2));
-  @include rounded();
+.table {
+    display: table;
+    border-collapse: collapse;
+    @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.2));
+    @include rounded();
+    font-family: $font;
+    position: absolute;
+    top: 95px;
+}
+
+.fixed-table {
+    display: table;
+    border-collapse: collapse;
+    @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.2));
+    @include rounded();
+    font-family: $font;
+    position: absolute;
+    top: 95px;
+    z-index: 999;
+}
+
+.table-fixed {
+    display: table-cell;
+    padding: 10px;
+    background: white;
+    font-size: 14px;
+    border: 1px solid $line-gray;
+    line-height: 1.2em;
+    font-weight: 400;
+}
+
+.table-header input {
+    font-weight: 400;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-cell {
+    display: table-cell;
+    text-align: right;
+    min-height: 30px;
+    background: white;
+    padding: 9px;
+    border: 1px solid $line-gray;
+}
+
+.table-cell input {
+    border: 1px solid $line-gray;
+    font-size: 13px;
+    text-align: right;
+    border: none;
+    height:100%;
+    min-width: 30px;
+}
+
+.table-cell input:focus {
+  border: none;
+  outline: 0;
 }
 
 .gradesheet-nav {
@@ -47,39 +103,12 @@
     color: $primary-black !important;
 }
 
-.table-border, .score-cell, .row-name {
-  border: 1px solid $line-gray;
-  padding: 10px;
-  white-space: nowrap;
-}
-
-.score-cell input {
-  font-size: 13px;
-  text-align: right;
-  border: none;
-  height:100%;
-  width: 100%;
-}
-
-.score-cell input:focus {
-  border: none;
-}
-
-.row-name {
+.table-header .table-row {
   padding: 10px 15px;
   font-weight: 600;
   font-size: 14px;
   background: white;
   font-family: $font;
-}
-
-.gradeRow {
-  margin-top: 20px;
-  background: white;
-}
-
-.gradeRow-header {
-  margin-top: 20px;
 }
 
 .gradeRow-header td {

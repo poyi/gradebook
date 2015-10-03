@@ -21,9 +21,9 @@ AssignmentHeader = React.createClass({
       },
   render() {
     return (
-      <td className="score-cell">
+      <div className="table-cell">
         <input type="text" value={this.props.assignment.name} onChange={this.handleChange} />
-      </td>
+      </div>
     );
   }
 });

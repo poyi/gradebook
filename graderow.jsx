@@ -13,10 +13,9 @@ GradeRow = React.createClass({
   },
   render() {
     return (
-      <tr className="gradeRow">
-        <td className="row-name">{this.props.student.firstName} {this.props.student.lastName}</td>
-        {this.renderScores()}
-      </tr>
+        <div className="table-row">
+            {this.renderScores()}
+        </div>
     );
   }
 });

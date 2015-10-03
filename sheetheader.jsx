@@ -12,10 +12,9 @@ SheetHeader = React.createClass({
   },
   render() {
     return (
-      <tr className="gradeRow-header">
-        <td className="row-name">Name</td>
-        {this.renderAssignments()}
-      </tr>
+        <div className="table-header table-row">
+            {this.renderAssignments()}
+        </div>
     );
   }
 });
