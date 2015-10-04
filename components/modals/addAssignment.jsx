@@ -3,12 +3,12 @@ AddAssignment = React.createClass({
     event.preventDefault();
 
     // Find the text field via the React ref
-    var name = React.findDOMNode(this.refs.name).value.trim();
-    var desc = React.findDOMNode(this.refs.desc).value.trim();
-    var total = React.findDOMNode(this.refs.total).value.trim();
+    var name = React.findDOMNode(this.refs.name).value;
+    var desc = React.findDOMNode(this.refs.desc).value;
+    var total = React.findDOMNode(this.refs.total).value;
     var gradesheet_id = this.props.gradesheet._id;
 
-    Meteor.call('addAssignment', gradesheet_id, name, total, function(error, result){
+    Meteor.call('addAssignment', gradesheet_id, name, desc, total, function(error, result){
       if(result) {
         // Fill in default score for each student
         var students = Students.find({}).fetch();

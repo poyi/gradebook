@@ -18,7 +18,7 @@
     font-family: $font;
     position: absolute;
     top: 95px;
-    z-index: 999;
+    z-index: 2;
 }
 
 .table-fixed {
@@ -29,6 +29,11 @@
     border: 1px solid $line-gray;
     line-height: 1.2em;
     font-weight: 400;
+}
+
+.table-header .table-cell {
+    padding: 10px;
+    position: relative;
 }
 
 .table-header input {
@@ -73,7 +78,6 @@
   width: 100%;
   position: fixed;
   top: 51px;
-  @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.2));
 }
 
 .gradesheet-nav a {
@@ -103,14 +107,6 @@
     color: $primary-black !important;
 }
 
-.table-header .table-row {
-  padding: 10px 15px;
-  font-weight: 600;
-  font-size: 14px;
-  background: white;
-  font-family: $font;
-}
-
 .gradeRow-header td {
   font-weight: bold !important;
   font-size: 13px !important;
@@ -138,4 +134,31 @@
 
 .sheet-container {
     width: auto;
+}
+
+.assignmentDetail {
+    display: none;
+    background: white;
+    position: absolute;
+    max-width: 130px;
+    height: auto;
+    border: $border;
+    @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.2));
+    @include rounded();
+    left: 20%;
+    z-index: 3;
+    padding: 10px;
+}
+
+.assignmentDetail .edit-link {
+    padding: 5px 0;
+}
+
+.assignmentDetail .stats {
+    text-align: left;
+    line-height: 2em;
+    border-bottom: $border;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    font-size: 11px;
 }

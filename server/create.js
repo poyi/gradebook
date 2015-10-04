@@ -6,10 +6,11 @@ Meteor.methods({
       'createdAt': new Date()
     });
   },
-  addAssignment: function (gradesheet_id, name, total) {
+  addAssignment: function (gradesheet_id, name, desc, total) {
     return Assignments.insert({
       'gradesheet': gradesheet_id,
       'name': name,
+      'desc': desc,
       'total': total,
       'createdAt': new Date()
     });
@@ -22,6 +23,7 @@ Meteor.methods({
     });
   },
   addGradebook: function (name) {
+      console.log('should log add gradebook');
     return Gradebooks.insert({
       'name': name,
       'createdAt': new Date()

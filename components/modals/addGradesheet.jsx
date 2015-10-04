@@ -9,7 +9,9 @@ AddGradesheet = React.createClass({
 
         Meteor.call('addGradesheet', gradebook_id, name, function(error, result){
             if(result) {
-                console.log('gradesheet added!');
+                console.log('gradesheet added! ' + result);
+                $('#' + result).addClass('current-sheet');
+                Session.setPersistent("currentSheet", result);
             } else {
                 console.log(error);
             }

@@ -5,6 +5,7 @@ $dark-gray: #a2a2a2;
 $dark-blue: #3E6AAD;
 $light-gray: #fcfcfc;
 $line-gray: #F3ECEC;
+$acent-gray: #e4e4e4;
 $border: 1px solid #F3ECEC;
 $font: 'Open Sans', arial, sans-serif;
 
@@ -91,4 +92,16 @@ button {
 a {
     cursor: pointer;
     text-decoration: none;
+}
+
+.edit-link {
+    font-family: $font;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    color: $primary-blue;
+}
+
+.edit-link:hover {
+    color: $light-blue;
 }

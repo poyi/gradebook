@@ -19,9 +19,9 @@ GradeSheet = React.createClass({
         var selected = Session.get('currentSheet');
         var currentSheet = this.props.gradesheet._id;
         if (selected == currentSheet) {
-            return {isVisible: true, newAssignment: false, newStudent: false};
+            return {isVisible: true, newAssignment: false, newStudent: false, editGradesheet: false};
         } else {
-            return {isVisible: false, newAssignment: false, newStudent: false};
+            return {isVisible: false, newAssignment: false, newStudent: false, editGradesheet: false};
         }
     },
     _renderStudentRows() {
@@ -54,11 +54,24 @@ GradeSheet = React.createClass({
             $('.add-student').text('- CLOSE FORM');
         }
     },
-    _closeForm: function() {
+    _editGradesheet: function() {
+        var currentState = this.state.editGradesheet;
+        if(currentState) {
+            this.setState({ editGradesheet: false });
+            $('.edit-gradesheet').text('EDIT GRADESHEET');
+        } else {
+            this.setState({ editGradesheet: true });
+            $('.edit-gradesheet').text('- CLOSE EDIT');
+        }
+    },
+    _closeForm: function(event) {
+        event.preventDefault();
         this.setState({ newAssignment: false });
         $('.add-assignment').text('+ ADD ASSIGNMENT');
         this.setState({ newStudent: false });
         $('.add-student').text('+ ADD STUDENT');
+        this.setState({ editGradesheet: false });
+        $('.edit-gradesheet').text('EDIT GRADESHEET');
     },
     componentDidMount: function() {
         var fixedWidth = $('.fixed-table').width();
@@ -73,6 +86,7 @@ GradeSheet = React.createClass({
             return (
                 <div className="sheet-container">
                     <div className="sheet-actions">
+                        <a className="edit-gradesheet add-link" onClick={this._editGradesheet}>EDIT GRADESHEET</a>
                         <a className="add-student add-link" onClick={this._addStudent}>+ ADD STUDENT</a>
                         <a className="add-assignment add-link" onClick={this._addAssignment}>+ ADD ASSIGNMENT</a>
                     </div>
@@ -86,6 +100,7 @@ GradeSheet = React.createClass({
                     </div>
                     <AddAssignment gradesheet={this.props.gradesheet} newAssignment={this.state.newAssignment} closeForm={this._closeForm}/>
                     <AddStudent newStudent={this.state.newStudent} closeForm={this._closeForm}/>
+                    <EditGradesheet gradesheet={this.props.gradesheet} editGradesheet={this.state.editGradesheet} closeForm={this._closeForm}/>
                 </div>
             );
         } else {

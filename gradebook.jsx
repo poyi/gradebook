@@ -38,10 +38,10 @@ GradeBook = React.createClass({
             $('.add-gradesheet').text('- CLOSE FORM');
         }
     },
-    _closeForm: function() {
-        this.setState({ newGradesheet: false, newStudent: false });
+    _closeForm: function(event) {
+        event.preventDefault();
+        this.setState({ newGradesheet: false});
         $('.add-gradesheet').text('+ ADD GRADESHEET');
-        $('.add-student').text('+ ADD STUDENT');
     },
   render() {
     return (

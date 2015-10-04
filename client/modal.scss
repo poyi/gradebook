@@ -4,10 +4,11 @@
   position: fixed;
   width: 320px;
   right: 10px;
-  top: 105px;
+  top: 15px;
+  text-align: left;
   height: auto;
   border: 1px solid $line-gray;
-  z-index: 99999;
+  z-index: 4;
   font-family: $font;
   background: white;
   @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.2));
@@ -18,8 +19,13 @@
   width: 300px;
   padding: 10px;
   border: none;
+  text-align: left;
   border-bottom: $border;
   font-size: 14px;
+}
+
+.modal-form input:focus {
+    border-bottom: $border;
 }
 
 .modal-form button {
@@ -35,5 +41,13 @@
 
 .modal-form .form-close {
     display: inline-block;
+    font-family: $font;
+    font-weight: bold;
+    color: $dark-gray;
     float: right;
+}
+
+.modal-form .edit-link {
+    padding: 15px 10px 0;
+    float: left;
 }

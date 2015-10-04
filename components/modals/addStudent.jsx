@@ -4,8 +4,8 @@ AddStudent = React.createClass({
         event.preventDefault();
 
         // Find the text field via the React ref
-        var firstName = React.findDOMNode(this.refs.firstName).value.trim();
-        var lastName = React.findDOMNode(this.refs.lastName).value.trim();
+        var firstName = React.findDOMNode(this.refs.firstName).value;
+        var lastName = React.findDOMNode(this.refs.lastName).value;
 
     Meteor.call('addStudent', firstName, lastName, function(error, result){
         // Fill in default score upon adding a new student
