@@ -1,7 +1,9 @@
 GradebookIndex = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
+        var handle = Meteor.subscribe("gradebooks");
         return {
+            loadingGradebook: ! handle.ready(),
             gradebooks: Gradebooks.find({owner: Meteor.userId()}).fetch(),
             currentUser: Meteor.user()
         }
@@ -30,6 +32,9 @@ GradebookIndex = React.createClass({
         $('.add-gradebook').text('+ ADD GRADEBOOK');
     },
     render() {
+        if (this.data.loadingGradebook) {
+          return <Loading />;
+        }
         return (
             <div className="container">
                 <header className="header">

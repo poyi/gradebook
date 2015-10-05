@@ -4,7 +4,8 @@ Score = React.createClass({
     score: React.PropTypes.object.isRequired
   },
   handleChange: function(event) {
-    Scores.update({_id: this.props.score._id},{ $set: {point: event.target.value} });
+      Meteor.subscribe("scores");
+      Scores.update({_id: this.props.score._id},{ $set: {point: event.target.value} });
   },
   componentDidMount: function() {
       function resizeInput() {

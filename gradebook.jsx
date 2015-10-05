@@ -1,7 +1,9 @@
 GradeBook = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
+        var handle = Meteor.subscribe("gradesheets");
         return {
+            loadingGradesheet: ! handle.ready(),
             currentUser: Meteor.user()
         }
     },
@@ -58,6 +60,9 @@ GradeBook = React.createClass({
         $('.add-gradesheet').text('+ ADD GRADESHEET');
     },
   render() {
+      if (this.data.loadingGradesheet) {
+        return <Loading />;
+      }
     return (
       <div>
         <header className="header">

@@ -8,7 +8,7 @@ AddGradebook = React.createClass({
 
         Meteor.call('addGradebook', owner, name, function(error, result){
           if(result) {
-            console.log('Gradebook added!');
+            console.log(result);
           } else {
             console.log(error);
           }

@@ -1,6 +1,7 @@
 GradeSheet = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
+        Meteor.subscribe("students");
         var selected = Session.get('currentSheet');
         var currentSheet = this.props.gradesheet._id;
         if ( selected == currentSheet ) {

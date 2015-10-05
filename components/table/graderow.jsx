@@ -1,6 +1,7 @@
 GradeRow = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
+      Meteor.subscribe("scores");
     return {
       scores: Scores.find({ student: this.props.student._id, gradesheet: this.props.gradesheet._id }).fetch()
     }

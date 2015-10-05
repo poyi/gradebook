@@ -1,6 +1,7 @@
 SheetHeader = React.createClass({
   mixins: [ReactMeteorData],
   getMeteorData() {
+    Meteor.subscribe("assignments");
     return {
       assignments: Assignments.find({ gradesheet: this.props.gradesheet._id }).fetch()
     }
