@@ -78,6 +78,7 @@
   width: 100%;
   position: fixed;
   top: 51px;
+  z-index: -2;
 }
 
 .gradesheet-nav a {
@@ -122,6 +123,7 @@
     position: fixed;
     top: 65px;
     right: 10px;
+    z-index: -1;
 }
 
 .sheet-actions a {

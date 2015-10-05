@@ -6,12 +6,14 @@ GradeSheet = React.createClass({
         if ( selected == currentSheet ) {
             return {
                 isVisible: true,
-                students: Students.find({}).fetch()
+                currentUser: Meteor.user(),
+                students: Students.find({owner: Meteor.userId()}).fetch()
             }
         } else {
             return {
                 isVisible: false,
-                students: Students.find({}).fetch()
+                currentUser: Meteor.user(),
+                students: Students.find({owner: Meteor.userId()}).fetch()
             }
         }
     },
@@ -82,30 +84,32 @@ GradeSheet = React.createClass({
         $('.table').css('left', fixedWidth);
     },
     render() {
-        if(this.data.isVisible) {
-            return (
-                <div className="sheet-container">
-                    <div className="sheet-actions">
-                        <a className="edit-gradesheet add-link" onClick={this._editGradesheet}>EDIT GRADESHEET</a>
-                        <a className="add-student add-link" onClick={this._addStudent}>+ ADD STUDENT</a>
-                        <a className="add-assignment add-link" onClick={this._addAssignment}>+ ADD ASSIGNMENT</a>
+        if(this.data.currentUser) {
+            if(this.data.isVisible) {
+                return (
+                    <div className="sheet-container">
+                        <div className="sheet-actions">
+                            <a className="edit-gradesheet add-link" onClick={this._editGradesheet}>EDIT GRADESHEET</a>
+                            <a className="add-student add-link" onClick={this._addStudent}>+ ADD STUDENT</a>
+                            <a className="add-assignment add-link" onClick={this._addAssignment}>+ ADD ASSIGNMENT</a>
+                        </div>
+                        <div className="fixed-table">
+                                <div className="table-fixed">Name</div>
+                                {this._renderStudentColumn()}
+                        </div>
+                        <div className="table">
+                            <SheetHeader gradesheet={this.props.gradesheet}/>
+                            {this._renderStudentRows()}
+                        </div>
+                        <AddAssignment gradesheet={this.props.gradesheet} newAssignment={this.state.newAssignment} closeForm={this._closeForm}/>
+                        <AddStudent newStudent={this.state.newStudent} closeForm={this._closeForm}/>
+                        <EditGradesheet gradesheet={this.props.gradesheet} editGradesheet={this.state.editGradesheet} closeForm={this._closeForm}/>
                     </div>
-                    <div className="fixed-table">
-                        <div className="table-fixed">Name</div>
-                        {this._renderStudentColumn()}
-                    </div>
-                    <div className="table">
-                        <SheetHeader gradesheet={this.props.gradesheet}/>
-                        {this._renderStudentRows()}
-                    </div>
-                    <AddAssignment gradesheet={this.props.gradesheet} newAssignment={this.state.newAssignment} closeForm={this._closeForm}/>
-                    <AddStudent newStudent={this.state.newStudent} closeForm={this._closeForm}/>
-                    <EditGradesheet gradesheet={this.props.gradesheet} editGradesheet={this.state.editGradesheet} closeForm={this._closeForm}/>
-                </div>
-            );
-        } else {
-            return <div className="invisible"></div>
+                );
+            } else {
+                return <div className="invisible"></div>
+            }
         }
-
+        return <div className="invisible"></div>
     }
 });

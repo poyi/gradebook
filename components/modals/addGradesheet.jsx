@@ -6,8 +6,9 @@ AddGradesheet = React.createClass({
         // Find the text field via the React ref
         var name = React.findDOMNode(this.refs.name).value.trim();
         var gradebook_id = this.props.gradebook._id;
+        var owner = Meteor.userId();
 
-        Meteor.call('addGradesheet', gradebook_id, name, function(error, result){
+        Meteor.call('addGradesheet', gradebook_id, owner, name, function(error, result){
             if(result) {
                 console.log('gradesheet added! ' + result);
                 $('#' + result).addClass('current-sheet');

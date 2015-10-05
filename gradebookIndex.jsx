@@ -2,7 +2,8 @@ GradebookIndex = React.createClass({
     mixins: [ReactMeteorData],
     getMeteorData() {
         return {
-            gradebooks: Gradebooks.find({}).fetch()
+            gradebooks: Gradebooks.find({owner: Meteor.userId()}).fetch(),
+            currentUser: Meteor.user()
         }
     },
     getInitialState: function() {
@@ -33,10 +34,16 @@ GradebookIndex = React.createClass({
             <div className="container">
                 <header className="header">
                     <div className="gradebook-title-home">Gradebooks</div>
+                     <AccountsUIWrapper />
+                     { this.data.currentUser ?
                     <button className="add-gradebook" onClick={this._addGradebook}>+ ADD GRADEBOOK</button>
+                     : ''
+                    }
                     <AddGradebook newGradebook={this.state.newGradebook} closeForm={this._closeForm}/>
                 </header>
-                {this._showGradebooks()}
+                { this.data.currentUser ?
+                    <span>{this._showGradebooks()}</span> : ''
+                }
             </div>
         );
     }

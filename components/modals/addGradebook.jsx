@@ -4,8 +4,9 @@ AddGradebook = React.createClass({
 
         // Find the text field via the React ref
         var name = React.findDOMNode(this.refs.name).value;
+        var owner = Meteor.userId();
 
-        Meteor.call('addGradebook', name, function(error, result){
+        Meteor.call('addGradebook', owner, name, function(error, result){
           if(result) {
             console.log('Gradebook added!');
           } else {

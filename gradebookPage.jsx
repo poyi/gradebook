@@ -2,8 +2,8 @@ GradebookPage = React.createClass({
  mixins: [ReactMeteorData],
  getMeteorData() {
    return {
-     gradesheets: Gradesheets.find({gradebook: this.props.gradebook}).fetch(),
-     gradebook: Gradebooks.findOne({_id: this.props.gradebook})
+       gradebook: Gradebooks.findOne({_id: this.props.gradebook, owner: Meteor.userId()}),
+       gradesheets: Gradesheets.find({gradebook: this.props.gradebook}).fetch()
    }
  },
   render() {

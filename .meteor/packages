@@ -23,3 +23,7 @@ kadira:flow-router
 kadira:react-layout
 fourseven:scss
 u2622:persistent-session
+accounts-ui
+accounts-password
+differential:event-hooks
+useraccounts:foundation

@@ -1,0 +1,108 @@
+@import 'global.scss';
+
+.page-title {
+    width: 280px;
+    height: auto;
+    margin: 0 auto;
+    font-family: $font;
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.page-subtitle {
+    max-width: 320px;
+    height: auto;
+    margin: 20px auto 0;
+    font-family: $font;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4em;
+    text-align: center;
+}
+
+.login-form {
+    margin: 20px auto 0;
+    width: 300px;
+}
+
+.login-form .login-dropdown-list {
+    display: block !important;
+}
+
+.at-title h3 {
+    color: white;
+    font-family: $font;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.at-pwd-form {
+    width: 280px;
+    height: auto;
+    background: white;
+    @include rounded();
+}
+
+.at-pwd-form form {
+    margin-top: 0;
+    font-family: $font;
+    font-size: 14px;
+}
+
+.at-input {
+    padding: 15px;
+    border-bottom: $border;
+}
+
+.at-input:last-of-type {
+    border: none;
+}
+
+.at-input label {
+    font-weight: 600 !important;
+}
+
+.at-input input {
+    display: block;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    font-family: $font;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.at-btn {
+    width: 100%;
+    padding: 0;
+    background: $dark-blue;
+    border: 1px solid white;
+    margin-top: 20px;
+    text-transform: uppercase;
+    color: white;
+}
+
+.at-signup-link p {
+    padding-top: 60px;
+    color: white;
+}
+
+.at-signin-link p {
+    padding-top: 80px;
+    color: white;
+}
+
+.at-signup-link a {
+    color: $light-blue;
+    text-decoration: underline;
+}
+
+.at-signin-link a {
+    color: $light-blue;
+    text-decoration: underline;
+}

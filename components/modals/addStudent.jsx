@@ -6,13 +6,15 @@ AddStudent = React.createClass({
         // Find the text field via the React ref
         var firstName = React.findDOMNode(this.refs.firstName).value;
         var lastName = React.findDOMNode(this.refs.lastName).value;
+        var owner = Meteor.userId();
 
-    Meteor.call('addStudent', firstName, lastName, function(error, result){
+    Meteor.call('addStudent', owner, firstName, lastName, function(error, result){
         // Fill in default score upon adding a new student
         var assignments = Assignments.find({}).fetch();
         assignments.map((assignment) => {
             Scores.insert({
                 gradesheet: assignment.gradesheet,
+                owner: owner,
                 student: result,
                 assignment: assignment._id,
                 point: 0,

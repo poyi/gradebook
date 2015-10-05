@@ -7,14 +7,16 @@ AddAssignment = React.createClass({
     var desc = React.findDOMNode(this.refs.desc).value;
     var total = React.findDOMNode(this.refs.total).value;
     var gradesheet_id = this.props.gradesheet._id;
+    var owner = Meteor.userId();
 
-    Meteor.call('addAssignment', gradesheet_id, name, desc, total, function(error, result){
+    Meteor.call('addAssignment', gradesheet_id, owner, name, desc, total, function(error, result){
       if(result) {
         // Fill in default score for each student
         var students = Students.find({}).fetch();
         students.map((student) => {
           Scores.insert({
               gradesheet: gradesheet_id,
+              owner: owner,
               student: student._id,
               assignment: result,
               point: 0,

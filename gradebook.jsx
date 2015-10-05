@@ -1,4 +1,10 @@
 GradeBook = React.createClass({
+    mixins: [ReactMeteorData],
+    getMeteorData() {
+        return {
+            currentUser: Meteor.user()
+        }
+    },
     getInitialState: function() {
       return {
           newGradesheet: false
@@ -19,14 +25,22 @@ GradeBook = React.createClass({
         $('#' + selected).addClass('current-sheet');
     },
     _GradeSheetNav() {
-        return this.props.gradesheets.map((gradesheet) => {
-            return <GradeSheetList key={gradesheet._id} gradesheet={gradesheet} />;
-        });
+        if (this.data.currentUser) {
+            return this.props.gradesheets.map((gradesheet) => {
+                return <GradeSheetList key={gradesheet._id} gradesheet={gradesheet} />;
+            });
+        } else {
+            console.log('Not belong to uesr');
+            FlowRouter.go('/');
+        }
     },
     _GradeSheet() {
         return this.props.gradesheets.map((gradesheet) => {
             return <GradeSheet key={gradesheet._id} gradesheet={gradesheet} />;
         });
+    },
+    _getTitle() {
+        return book = this.props.gradebook.name;
     },
     _addGradesheet: function() {
         var currentState = this.state.newGradesheet;
@@ -48,12 +62,15 @@ GradeBook = React.createClass({
       <div>
         <header className="header">
           <a href="/" className="home-link">&lsaquo;</a>
-          <div className="gradebook-title">{this.props.gradebook.name}</div>
+          <div className="gradebook-title">
+              {this._getTitle()}
+          </div>
+          <AccountsUIWrapper />
         </header>
         <div className="gradesheet-nav">
-          {this._GradeSheetNav()}
-          <a className="add-gradesheet add-link" onClick={this._addGradesheet}>+ ADD GRADESHEET</a>
-        </div>
+            {this._GradeSheetNav()}
+            <a className="add-gradesheet add-link" onClick={this._addGradesheet}>+ ADD GRADESHEET</a>
+      </div>
         {this._GradeSheet()}
         <AddGradesheet gradebook={this.props.gradebook} newGradesheet={this.state.newGradesheet} closeForm={this._closeForm}/>
       </div>
