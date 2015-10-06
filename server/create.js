@@ -27,8 +27,18 @@ Meteor.methods({
   },
   addGradebook: function (owner, name) {
     return Gradebooks.insert({
-      'owner': owner, 
+      'owner': owner,
       'name': name,
+      'createdAt': new Date()
+    });
+  },
+  addScore: function (owner, gradesheet_id, student_id, assignment_id) {
+    return Scores.insert({
+      'owner': owner,
+      'gradesheet':  gradesheet_id,
+      'student':  student_id,
+      'assignment': assignment_id,
+      'point': 0,
       'createdAt': new Date()
     });
   }
