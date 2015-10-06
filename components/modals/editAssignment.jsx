@@ -16,6 +16,17 @@ EditAssignment = React.createClass({
       }
     });
 },
+_deleteAssignment: function(event) {
+  event.preventDefault();
+  var assignment_id = this.props.assignment._id;
+  Meteor.call('deleteAssignment', assignment_id, function(error, result){
+    if(result) {
+      console.log('Assignment Deleted!');
+    } else {
+      console.log(error);
+    }
+  });
+},
   render() {
     if(this.props.editAssignment) {
         return(
@@ -25,12 +36,13 @@ EditAssignment = React.createClass({
                 <input type="text" ref="name" value={this.props.assignment.name} onChange={this._handleSubmit} />
                 <input type="text" ref="desc" value={this.props.assignment.desc} onChange={this._handleSubmit} />
                 <input type="text" ref="total" value={this.props.assignment.total} onChange={this._handleSubmit} />
+                <div className="edit-link" onClick={this._deleteAssignment}>- DELETE</div>
                 <button type="submit" onClick={this.props.closeForm}>UPDATE</button>
             </form>
           </div>
         );
     } else {
-        return <div className="invisible"></div>
+        return <div className="invisible"></div>;
     }
   }
 });

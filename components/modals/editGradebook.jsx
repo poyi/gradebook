@@ -29,7 +29,7 @@ EditGradebook = React.createClass({
           <form className="new-gradesheet" onSubmit={this._updateGradebook} >
               <div className="form-header">Edit Gradebook<a className="form-close" onClick={this.props.closeForm}>x</a></div>
               <input type="text" ref="name" value={this.props.gradebook.name} onChange={this._updateGradebook}/>
-              <div className="edit-link" type="submit" onClick={this._deleteGradebook}>- DELETE</div>
+              <div className="edit-link" onClick={this._deleteGradebook}>- DELETE</div>
               <button type="submit" onClick={this.props.closeForm}>UPDATE</button>
           </form>
         </div>
